@@ -22,3 +22,12 @@ elif -0.5 > current_mood >= -1:
 
 print(current_mood)
 print(mood)
+
+
+# mood_to_search_query = {
+#     "Very Happy": "high energy party hits",
+#     "Happy": "chill vibes",
+#     "Neutral": "lo-fi beats",
+#     "Slightly Sad": "mellow acoustic",
+#     "Very Sad": "soft ballads"
+# }
