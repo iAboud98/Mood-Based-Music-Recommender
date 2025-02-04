@@ -10,8 +10,6 @@ def user_mood():
 
     current_mood = TextBlob(text).polarity  # -> analyze current mood from text
 
-    mood = "Natural"  # -> initial mood
-
     # -> update based on input text from user
     if current_mood > 0.5:
         mood = "Very Happy"
@@ -21,5 +19,7 @@ def user_mood():
         mood = "Slightly Sad"
     elif -0.5 > current_mood >= -1:
         mood = "Very Sad"
+    else:
+        mood = "Neutral"
 
     return mood
