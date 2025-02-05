@@ -1,15 +1,25 @@
+from flask import Flask, request, jsonify, render_template
 from spotify_integration.spotify_API import get_playlist
 
-print("🎵 Welcome to Moodify! 🎵")
-print("Let your mood guide your music experience!\n")
+app = Flask(__name__)
 
-try:
-    playlists = get_playlist()
 
-    print("\n✨ Recommended Playlists for You ✨")
-    for idx, playlist in enumerate(playlists):
-        print(f"{idx+1}. {playlist['name']} - {playlist['url']}")
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-except Exception as e:
-    print("\n❌ Oops! Something went wrong.")
-    print(f"Error: {e}")
+
+@app.route("/get_playlist", methods=["POST"])
+def get_playlist_route():
+    data = request.get_json()
+    mood = data.get("mood")
+
+    try:
+        playlists = get_playlist(mood)
+        return jsonify(playlists=playlists)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
