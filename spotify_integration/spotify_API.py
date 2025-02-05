@@ -59,10 +59,11 @@ def get_playlist():
     if response.status_code == 200:
         playlists = []
         for playlist in response.json()["playlists"]["items"]:
-            playlists.append({
-                "name": playlist["name"],
-                "url": playlist["external_urls"]["spotify"]
-            })
+            if playlist:
+                playlists.append({
+                    "name": playlist["name"],
+                    "url": playlist["external_urls"]["spotify"]
+                })
         return playlists
     else:
         raise Exception(f"Failed to fetch playlists: {response.status_code}, {response.text}")
