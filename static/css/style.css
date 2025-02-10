@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,18 +11,34 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../images/Spotify_Primary_Logo_RGB_Green.png"); /* Update with the correct path */
+    position: relative;
+}
+
+/* Background Image with Blur */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/Spotify_Primary_Logo_RGB_Green.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    filter: blur(10px); /* Increase for stronger blur */
+    opacity: 0.2; /* Adjust transparency */
+    z-index: -1;
 }
 
+/* Heading */
 h1 {
     color: #1DB954; /* Spotify green */
     font-size: 32px;
     margin-bottom: 20px;
 }
 
+/* Input Field */
 input[type="text"] {
     width: 60%;
     padding: 12px;
@@ -33,6 +50,7 @@ input[type="text"] {
     outline: none;
 }
 
+/* Button */
 button {
     width: 30%;
     padding: 12px;
@@ -49,6 +67,7 @@ button:hover {
     background-color: #17a74b;
 }
 
+/* Result Section */
 #result {
     margin-top: 20px;
     font-size: 18px;
