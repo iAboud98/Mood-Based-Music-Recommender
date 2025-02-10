@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from spotify_integration.spotify_API import get_playlist
+from sentiment_analysis.analyze import user_mood
 
 app = Flask(__name__)
 
@@ -16,8 +17,10 @@ def get_playlist_route():
 
     try:
         playlists = get_playlist(mood)
+        print(f"Fetched playlists: {playlists}")
         return jsonify(playlists=playlists)
     except Exception as e:
+        print(f"Error: {str(e)}")
         return jsonify(error=str(e)), 500
 
 
