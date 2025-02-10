@@ -1,18 +1,16 @@
 import base64
 import requests
-from sentiment_analysis.analyze import user_mood
+import random
 from config import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET
 
 
 def get_spotify_access_token():
-
     url = "https://accounts.spotify.com/api/token"
-
     client_creds = f"{SPOTIFY_CLIENT_ID}:{SPOTIFY_CLIENT_SECRET}"
     client_creds_b64 = base64.b64encode(client_creds.encode()).decode()
 
     headers = {
-        "Authorization": f"Basic {client_creds_b64}"
+        "Authorization": f"Basic {client_creds_b64}",
     }
 
     data = {
@@ -27,29 +25,31 @@ def get_spotify_access_token():
         raise Exception(f"Failed to get access token: {response.status_code}, {response.text}")
 
 
-def get_playlist():
-
-    mood = user_mood()
-
-    mood_to_search_query = {
-        "Very Happy": "high energy party hits",
-        "Happy": "chill vibes",
-        "Neutral": "lo-fi beats",
-        "Slightly Sad": "mellow acoustic",
-        "Very Sad": "soft ballads"
+def get_playlist(mood):
+    mood_queries = {
+        "Very Happy": ["party anthems", "high energy pop", "festival hits", "dance party", "feel-good pop"],
+        "Happy": ["chill pop", "summer vibes", "good vibes", "happy indie", "positive energy"],
+        "Neutral": ["lo-fi beats", "study beats", "ambient chill", "chill instrumental", "focus mode"],
+        "Slightly Sad": ["mellow acoustic", "sad indie", "soft piano", "deep focus", "melancholy mood"],
+        "Very Sad": ["sad ballads", "broken heart songs", "soft rock", "lonely nights", "emotional hits"]
     }
 
-    playlist_query = mood_to_search_query.get(mood, "chill vibes")
+    # Normalize input mood (capitalize first letter to match dictionary keys)
+    mood = mood.title()
+
+    if mood not in mood_queries:
+        print(f"⚠️ Mood '{mood}' not found in mapping. Defaulting to 'chill vibes'.")
+        mood = "Neutral"  # Default to neutral if mood is unknown
+
+    search_query = random.choice(mood_queries[mood])
+    print(f"🔎 Searching for: {search_query} based on mood: {mood}")  # Debugging print
 
     access_token = get_spotify_access_token()
 
-    # Define the search endpoint and parameters
     search_url = "https://api.spotify.com/v1/search"
-    headers = {
-        "Authorization": f"Bearer {access_token}"
-    }
+    headers = {"Authorization": f"Bearer {access_token}"}
     params = {
-        "q": playlist_query,
+        "q": search_query,
         "type": "playlist",
         "limit": 5
     }
