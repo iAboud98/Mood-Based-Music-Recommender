@@ -75,7 +75,7 @@ button:hover {
 
 /* Footer */
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     width: 100%;
     text-align: center;
@@ -83,6 +83,10 @@ footer {
     padding: 10px 0;
     background: rgba(0, 0, 0, 0.8);
     color: #bbb;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 footer a {
