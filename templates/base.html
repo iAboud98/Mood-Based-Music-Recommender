@@ -7,12 +7,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>Developed by <strong>Abedalrheem Fialah</strong></p>
+        <p>📧 Contact: <a href="mailto:abedalrheem.fialah@example.com">aboudfialah98@gmail.com</a></p>
+        <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/abedalrheemfialah" target="_blank">linkedin.com/in/abedalrheemfialah</a></p>
+        <p>🎵 Powered by <a href="https://www.spotify.com" target="_blank">Spotify</a></p>
+    </footer>
 
     {% block scripts %}
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% endblock %}
 </body>
 </html>
-

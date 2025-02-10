@@ -26,14 +26,14 @@ body::before {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(10px); /* Increase for stronger blur */
-    opacity: 0.2; /* Adjust transparency */
+    filter: blur(10px);
+    opacity: 0.2;
     z-index: -1;
 }
 
 /* Heading */
 h1 {
-    color: #1DB954; /* Spotify green */
+    color: #1DB954;
     font-size: 32px;
     margin-bottom: 20px;
 }
@@ -71,4 +71,26 @@ button:hover {
 #result {
     margin-top: 20px;
     font-size: 18px;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #bbb;
+}
+
+footer a {
+    color: #1DB954;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
