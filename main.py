@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, render_template
 from spotify_integration.spotify_API import get_playlist
-from sentiment_analysis.analyze import user_mood
 
 app = Flask(__name__)
 
