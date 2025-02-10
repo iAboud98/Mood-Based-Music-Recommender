@@ -1,25 +1,23 @@
 from textblob import TextBlob
 
 
-def user_mood():
-    text = input("Type your current mood -> ")  # -> Temporarily created before taking mood from prompt
+def user_mood(user_text):
 
-    if not text.strip():  # -> if user didn't type anything
+    if not user_text.strip():  # -> if user didn't type anything
         print("Please enter a valid response.")
         exit()
 
-    current_mood = TextBlob(text).polarity  # -> analyze current mood from text
+    current_mood = TextBlob(user_text).polarity  # -> analyze current mood from text
 
     # -> update based on input text from user
     if current_mood > 0.5:
-        mood = "Very Happy"
+        return "Very Happy"
     elif 0 < current_mood <= 0.5:
-        mood = "Slightly Happy"
+        return "Slightly Happy"
     elif 0 > current_mood >= -0.5:
-        mood = "Slightly Sad"
+        return "Slightly Sad"
     elif -0.5 > current_mood >= -1:
-        mood = "Very Sad"
+        return "Very Sad"
     else:
-        mood = "Neutral"
+        return "Neutral"
 
-    return mood
