@@ -1,10 +1,10 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Comic Sans MS', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000;
-    color: #fff;
+    background-color: #d9f2e6; /* Lighter Greenish Background */
+    color: #000; /* Darker text for contrast */
     text-align: center;
     height: 100vh;
     display: flex;
@@ -12,9 +12,10 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 
-/* Background Image with Blur */
+/* Blurred Background Image */
 body::before {
     content: "";
     position: absolute;
@@ -27,15 +28,16 @@ body::before {
     background-position: center;
     background-repeat: no-repeat;
     filter: blur(10px);
-    opacity: 0.2;
+    opacity: 0.1;
     z-index: -1;
 }
 
 /* Heading */
 h1 {
     color: #1DB954;
-    font-size: 32px;
+    font-size: 36px;
     margin-bottom: 20px;
+    animation: shake 0.8s infinite alternate;
 }
 
 /* Input Field */
@@ -45,9 +47,14 @@ input[type="text"] {
     font-size: 16px;
     border: 2px solid #1DB954;
     border-radius: 5px;
-    background-color: #222;
-    color: #fff;
+    background-color: #f0f8ff; /* Light bluish background */
+    color: #000; /* Darker text */
     outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+input[type="text"]:hover {
+    transform: scale(1.05);
 }
 
 /* Button */
@@ -65,12 +72,30 @@ button {
 
 button:hover {
     background-color: #17a74b;
+    transform: rotate(-3deg) scale(1.1);
 }
 
-/* Result Section */
-#result {
-    margin-top: 20px;
-    font-size: 18px;
+/* Funny Loading Text */
+#funny-text {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Floating Music Notes */
+.music-notes {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    animation: float 3s infinite alternate ease-in-out;
+}
+
+.music-notes span {
+    font-size: 24px;
+    opacity: 0.8;
 }
 
 /* Footer */
@@ -81,8 +106,8 @@ footer {
     text-align: center;
     font-size: 14px;
     padding: 10px 0;
-    background: rgba(0, 0, 0, 0.8);
-    color: #bbb;
+    background: rgba(0, 0, 0, 0.1);
+    color: #333;
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -97,4 +122,15 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Animations */
+@keyframes shake {
+    from { transform: rotate(-2deg); }
+    to { transform: rotate(2deg); }
+}
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
 }
