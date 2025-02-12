@@ -35,7 +35,7 @@ body::before {
 /* Top Bar */
 .top-bar {
     background-color: #000; /* Black background */
-    color: #fff; /* White text */
+    color: #1DB954;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,7 +58,7 @@ body::before {
 /* Spotify Logo */
 .top-bar .logo img {
     height: 40px; /* Increased the size for better visibility */
-    margin-right: 20px; /* Spacing between the logo and the title */
+    margin-left: 10px; /* Spacing between the logo and the title */
 }
 
 /* Heading */
@@ -114,13 +114,13 @@ button:hover {
 /* Footer */
 footer {
     position: fixed;
-    bottom: 10px;
+    bottom: 0;
     width: 100%;
     text-align: center;
     font-size: 14px;
     padding: 10px 0;
-    background: rgba(0, 0, 0, 0.1);
-    color: #333;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
     display: flex;
     justify-content: center;
     gap: 20px;
