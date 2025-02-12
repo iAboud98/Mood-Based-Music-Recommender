@@ -61,12 +61,6 @@ body::before {
     margin-left: 10px; /* Spacing between the logo and the title */
 }
 
-/* Heading */
-h1 {
-    color: #fff;
-    font-size: 36px;
-    margin-bottom: 20px;
-}
 
 /* Input Field */
 input[type="text"] {
