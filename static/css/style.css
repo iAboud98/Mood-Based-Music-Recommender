@@ -3,7 +3,7 @@ body {
     font-family: 'Comic Sans MS', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #d9f2e6; /* Lighter Greenish Background */
+    background-color: #1DB954; /* Lighter Greenish Background */
     color: #000; /* Darker text for contrast */
     text-align: center;
     height: 100vh;
@@ -28,7 +28,7 @@ body::before {
     background-position: center;
     background-repeat: no-repeat;
     filter: blur(5px); /* Reduced blur */
-    opacity: 0.2; /* Slightly more visible */
+    opacity: 0.25; /* Slightly more visible */
     z-index: -1;
 }
 
@@ -63,7 +63,7 @@ body::before {
 
 /* Heading */
 h1 {
-    color: #1DB954;
+    color: #fff;
     font-size: 36px;
     margin-bottom: 20px;
     animation: shake 0.8s infinite alternate;
@@ -92,7 +92,7 @@ button {
     padding: 12px;
     font-size: 18px;
     color: #fff;
-    background-color: #1DB954;
+    background-color: #000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -100,16 +100,9 @@ button {
 }
 
 button:hover {
-    background-color: #17a74b;
     transform: rotate(-3deg) scale(1.1);
 }
 
-/* Funny Loading Text */
-#funny-text {
-    font-size: 16px;
-    margin-top: 10px;
-    color: #666;
-}
 
 /* Footer */
 footer {
