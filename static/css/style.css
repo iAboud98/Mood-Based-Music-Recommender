@@ -32,6 +32,35 @@ body::before {
     z-index: -1;
 }
 
+/* Top Bar */
+.top-bar {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Title */
+.top-bar .title {
+    font-size: 22px;
+    font-weight: bold;
+    flex: 1; /* Allow the title to take up available space on the left */
+    text-align: left; /* Align text to the left */
+    margin-left: 20px;
+}
+
+/* Spotify Logo */
+.top-bar .logo img {
+    height: 40px; /* Increased the size for better visibility */
+    margin-right: 20px; /* Spacing between the logo and the title */
+}
+
 /* Heading */
 h1 {
     color: #1DB954;
