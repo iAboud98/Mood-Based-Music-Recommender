@@ -1,43 +1,38 @@
-function getPlaylist() {
-    let mood = document.getElementById("moodInput").value.trim();
+async function getPlaylist() {
+    // Get the user's mood
+    const mood = document.getElementById("moodInput").value;
 
-    if (mood === "") {
-        alert("Please enter a mood! 🎭");
+    if (!mood) {
+        document.getElementById("result").innerHTML = "<p>Please enter your mood!</p>";
         return;
     }
 
-    // Fun loading messages
-    let funnyMessages = [
-        "🎶 Finding the perfect playlist... Hold on to your headphones!",
-        "🎧 Scanning the Spotify universe for good vibes...",
-        "🎵 Mixing beats and matching moods... Almost there!"
-    ];
-    let randomMessage = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
-
-    // Show loading text
-    document.getElementById("funny-text").innerText = randomMessage;
-
-    fetch("/get_playlist", {
-        method: "POST",
-        body: JSON.stringify({ mood: mood }),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(response => response.json())
-    .then(data => {
-        let resultDiv = document.getElementById("result");
-        resultDiv.innerHTML = `<h2>🎵 Here’s Your Playlist:</h2>`;
-
-        data.playlists.forEach(playlist => {
-            let playlistElement = document.createElement("p");
-            playlistElement.innerHTML = `<a href="${playlist.url}" target="_blank">${playlist.name} 🔗</a>`;
-            resultDiv.appendChild(playlistElement);
+    // Send the mood to the backend via a POST request
+    try {
+        const response = await fetch('/get_playlist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ mood: mood }),
         });
 
-        // Remove loading message
-        document.getElementById("funny-text").innerText = "";
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        document.getElementById("funny-text").innerText = "🚨 Oops! Something went wrong. Try again!";
-    });
+        // Parse the JSON response
+        const data = await response.json();
+
+        // Display the result
+        if (data.error) {
+            document.getElementById("result").innerHTML = `<p>${data.error}</p>`;
+        } else if (data.playlists) {
+            let playlistsHtml = '<h2>Recommended Playlists:</h2><ul>';
+            data.playlists.forEach(playlist => {
+                playlistsHtml += `<li><a href="${playlist.url}" target="_blank">${playlist.name}</a></li>`;
+            });
+            playlistsHtml += '</ul>';
+            document.getElementById("result").innerHTML = playlistsHtml;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById("result").innerHTML = "<p>Something went wrong. Please try again later.</p>";
+    }
 }
