@@ -48,7 +48,7 @@ body::before {
 
 /* Title */
 .top-bar .title {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: bold;
     flex: 1; /* Allow the title to take up available space on the left */
     text-align: left; /* Align text to the left */
