@@ -13,7 +13,9 @@ body {
     align-items: center;
     position: relative;
     overflow-y: auto; /* Enables vertical scrolling */
+    padding-bottom: 50px; /* Adds space at the bottom of the page */
 }
+
 
 /* Blurred Background Image */
 body::before {
@@ -151,7 +153,9 @@ footer {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+    margin-bottom: 0.2px; /* Adds space between the footer and the bottom of the page */
 }
+
 
 footer a {
     color: #1DB954;
