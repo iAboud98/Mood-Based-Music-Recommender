@@ -1,5 +1,4 @@
 async function getPlaylist() {
-    // Get the user's mood
     const mood = document.getElementById("moodInput").value;
 
     if (!mood) {
@@ -7,7 +6,6 @@ async function getPlaylist() {
         return;
     }
 
-    // Send the mood to the backend via a POST request
     try {
         const response = await fetch('/get_playlist', {
             method: 'POST',
@@ -17,18 +15,21 @@ async function getPlaylist() {
             body: JSON.stringify({ mood: mood }),
         });
 
-        // Parse the JSON response
         const data = await response.json();
 
-        // Display the result
         if (data.error) {
             document.getElementById("result").innerHTML = `<p>${data.error}</p>`;
         } else if (data.playlists) {
-            let playlistsHtml = '<h2>Recommended Playlists:</h2><ul>';
+            let playlistsHtml = '<h2>Recommended Playlists:</h2><div class="playlist-container">';
             data.playlists.forEach(playlist => {
-                playlistsHtml += `<li><a href="${playlist.url}" target="_blank">${playlist.name}</a></li>`;
+                playlistsHtml += `
+                    <div class="playlist-card">
+                        <img src="${playlist.image}" alt="Playlist Image" class="playlist-image">
+                        <a href="${playlist.url}" target="_blank">${playlist.name}</a>
+                    </div>
+                `;
             });
-            playlistsHtml += '</ul>';
+            playlistsHtml += '</div>';
             document.getElementById("result").innerHTML = playlistsHtml;
         }
     } catch (error) {

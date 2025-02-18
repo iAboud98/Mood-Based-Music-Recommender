@@ -5,29 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mood-Based Music Recommender 🎧</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
 <body>
     <!-- Top Bar -->
     <div class="top-bar">
         <span class="title">Moodify your Playlist</span>
-        <span class="logo"><img src="{{ url_for('static', filename='images/Spotify_Full_Logo_RGB_Green.png') }}" alt="Spotify Logo"></span>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/Spotify_Primary_Logo_RGB_Green.png') }}" alt="Spotify Logo">
+        </div>
     </div>
 
-    <div class="content">
-        {% block content %}
-        {% endblock %}
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Find the Perfect Playlist for Your Mood</h1>
+        <p>Enter a short description of how you feel, and we'll find the best playlist for you!</p>
+
+        <input type="text" id="moodInput" placeholder="Type your mood here...">
+        <button onclick="getPlaylist()">Find Playlist</button>
+
+        <div id="result"></div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
-        <span>👨‍💻 Developed by <strong>Abedalrheem Fialah</strong></span>
-        <span>📞 +970 599 123 456</span>
-        <span>📧 abedalrheem.fialah@example.com</span>
-        <span>🔗 <a href="https://www.linkedin.com/in/abedalrheemfialah" target="_blank">Find me at LinkedIn</a></span>
+        <p>Powered by Spotify API 🎶</p>
+        <a href="https://developer.spotify.com/" target="_blank">Learn More</a>
     </footer>
-
-    {% block scripts %}
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    {% endblock %}
 </body>
 </html>

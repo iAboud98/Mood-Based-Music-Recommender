@@ -34,18 +34,15 @@ def get_playlist(mood):
         "Very Sad": ["sad ballads", "broken heart songs", "soft rock", "lonely nights", "emotional hits"]
     }
 
-    # Normalize input mood (capitalize first letter to match dictionary keys)
     mood = mood.title()
-
     if mood not in mood_queries:
         print(f"⚠️ Mood '{mood}' not found in mapping. Defaulting to 'chill vibes'.")
-        mood = "Neutral"  # Default to neutral if mood is unknown
+        mood = "Neutral"
 
     search_query = random.choice(mood_queries[mood])
-    print(f"🔎 Searching for: {search_query} based on mood: {mood}")  # Debugging print
+    print(f"🔎 Searching for: {search_query} based on mood: {mood}")
 
     access_token = get_spotify_access_token()
-
     search_url = "https://api.spotify.com/v1/search"
     headers = {"Authorization": f"Bearer {access_token}"}
     params = {
@@ -62,7 +59,8 @@ def get_playlist(mood):
             if playlist:
                 playlists.append({
                     "name": playlist["name"],
-                    "url": playlist["external_urls"]["spotify"]
+                    "url": playlist["external_urls"]["spotify"],
+                    "image": playlist["images"][0]["url"] if playlist["images"] else None  # Get the first image
                 })
         return playlists
     else:
