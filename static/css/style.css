@@ -138,24 +138,27 @@ button:hover {
     border-radius: 8px; /* Optional: adds rounded corners to the image */
 }
 
-
-/* Footer */
+/* Footer Section */
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
     font-size: 14px;
-    padding: 10px 0;
+    padding: 20px 0;
     background-color: #000;
     color: #fff;
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 0.2px; /* Adds space between the footer and the bottom of the page */
+    justify-content: space-around; /* Distribute space evenly */
+    align-items: center;
+    gap: 20px; /* Add space between items */
 }
 
+footer p,
+footer a,
+footer span {
+    margin: 0 10px; /* Space between elements */
+}
 
 footer a {
     color: #1DB954;
