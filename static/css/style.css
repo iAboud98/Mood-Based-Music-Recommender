@@ -1,23 +1,20 @@
-/* General Styles */
 body {
     font-family: 'Comic Sans MS', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1DB954; /* Spotify green */
-    color: #000; /* Darker text for contrast */
+    background-color: #1DB954;
+    color: #000;
     text-align: center;
-    min-height: 100vh; /* Ensures the body takes at least full viewport height */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Change from center to allow scrolling */
+    justify-content: flex-start;
     align-items: center;
     position: relative;
-    overflow-y: auto; /* Enables vertical scrolling */
-    padding-bottom: 50px; /* Adds space at the bottom of the page */
+    overflow-y: auto;
+    padding-bottom: 50px;
 }
 
-
-/* Blurred Background Image */
 body::before {
     content: "";
     position: absolute;
@@ -34,9 +31,8 @@ body::before {
     z-index: -1;
 }
 
-/* Top Bar */
 .top-bar {
-    background-color: #000; /* Black background */
+    background-color: #000;
     color: #1DB954;
     display: flex;
     justify-content: space-between;
@@ -48,32 +44,28 @@ body::before {
     z-index: 1000;
 }
 
-/* Title */
 .top-bar .title {
     font-size: 28px;
     font-weight: bold;
-    flex: 1; /* Allow the title to take up available space on the left */
+    flex: 1;
     text-align: left;
     margin-left: 20px;
 }
 
-/* Spotify Logo */
 .top-bar .logo img {
     height: 40px;
     margin-left: 10px;
 }
 
-/* Main Container */
 .container {
     max-width: 600px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 70px; /* Add margin to prevent overlap with fixed top bar */
+    margin-top: 70px;
 }
 
-/* Input Field */
 input[type="text"] {
     width: 60%;
     padding: 12px;
@@ -90,7 +82,6 @@ input[type="text"]:hover {
     transform: scale(1.05);
 }
 
-/* Button */
 button {
     width: 30%;
     padding: 12px;
@@ -107,19 +98,17 @@ button:hover {
     transform: rotate(-3deg) scale(1.1);
 }
 
-/* Playlist Results */
 #result {
     margin-top: 20px;
     font-size: 18px;
 }
 
-/* Ensure the link appears above the image */
 #result a {
-    display: block; /* Makes the link a block element to force it to a new line */
+    display: block;
     text-decoration: none;
     color: #1DB954;
     font-weight: bold;
-    margin-bottom: 10px; /* Adds some space between the link and the image */
+    margin-bottom: 10px;
 }
 
 #result ul {
@@ -132,13 +121,12 @@ button:hover {
     font-size: 18px;
 }
 
-/* Add image styling if needed */
+
 #result img {
-    width: 100%; /* Makes the image take up the full width of its container */
-    border-radius: 8px; /* Optional: adds rounded corners to the image */
+    width: 100%;
+    border-radius: 8px;
 }
 
-/* Footer Section */
 footer {
     position: fixed;
     bottom: 0;
@@ -149,15 +137,15 @@ footer {
     background-color: #000;
     color: #fff;
     display: flex;
-    justify-content: space-around; /* Distribute space evenly */
+    justify-content: space-around;
     align-items: center;
-    gap: 20px; /* Add space between items */
+    gap: 20px;
 }
 
 footer p,
 footer a,
 footer span {
-    margin: 0 10px; /* Space between elements */
+    margin: 0 10px;
 }
 
 footer a {

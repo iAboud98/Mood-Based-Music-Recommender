@@ -36,11 +36,9 @@ def get_playlist(mood):
 
     mood = mood.title()
     if mood not in mood_queries:
-        print(f"⚠️ Mood '{mood}' not found in mapping. Defaulting to 'chill vibes'.")
         mood = "Neutral"
 
     search_query = random.choice(mood_queries[mood])
-    print(f"🔎 Searching for: {search_query} based on mood: {mood}")
 
     access_token = get_spotify_access_token()
     search_url = "https://api.spotify.com/v1/search"
