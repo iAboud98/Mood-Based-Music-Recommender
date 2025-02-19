@@ -28,9 +28,9 @@ def get_spotify_access_token():
 def get_playlist(mood):
     mood_queries = {
         "Very Happy": ["party anthems", "high energy pop", "festival hits", "dance party", "feel-good pop"],
-        "Happy": ["chill pop", "summer vibes", "good vibes", "happy indie", "positive energy"],
-        "Neutral": ["lo-fi beats", "study beats", "ambient chill", "chill instrumental", "focus mode"],
-        "Slightly Sad": ["mellow acoustic", "sad indie", "soft piano", "deep focus", "melancholy mood"],
+        "Happy": ["summer vibes", "good vibes", "happy indie", "positive energy"],
+        "Neutral": ["lo-fi beats", "ambient chill", "chill instrumental", "focus mode"],
+        "Slightly Sad": ["mellow acoustic", "sad indie", "soft piano"],
         "Very Sad": ["sad ballads", "broken heart songs", "soft rock", "lonely nights", "emotional hits"]
     }
 
@@ -53,13 +53,14 @@ def get_playlist(mood):
 
     if response.status_code == 200:
         playlists = []
-        for playlist in response.json()["playlists"]["items"]:
-            if playlist:
-                playlists.append({
-                    "name": playlist["name"],
-                    "url": playlist["external_urls"]["spotify"],
-                    "image": playlist["images"][0]["url"] if playlist["images"] else None  # Get the first image
-                })
+        while not playlists:
+            for playlist in response.json()["playlists"]["items"]:
+                if playlist:
+                    playlists.append({
+                        "name": playlist["name"],
+                        "url": playlist["external_urls"]["spotify"],
+                        "image": playlist["images"][0]["url"] if playlist["images"] else None  # Get the first image
+                    })
         return playlists
     else:
         raise Exception(f"Failed to fetch playlists: {response.status_code}, {response.text}")
