@@ -13,7 +13,7 @@ def user_mood(user_text):
     if current_mood > 0.5:
         return "Very Happy"
     elif 0 < current_mood <= 0.5:
-        return "Slightly Happy"
+        return "Happy"
     elif 0 > current_mood >= -0.5:
         return "Slightly Sad"
     elif -0.5 > current_mood >= -1:

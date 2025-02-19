@@ -26,6 +26,7 @@ def get_spotify_access_token():
 
 
 def get_playlist(mood):
+
     mood_queries = {
         "Very Happy": ["party anthems", "high energy pop", "festival hits", "dance party", "feel-good pop"],
         "Happy": ["summer vibes", "good vibes", "happy indie", "positive energy"],
@@ -34,11 +35,13 @@ def get_playlist(mood):
         "Very Sad": ["sad ballads", "broken heart songs", "soft rock", "lonely nights", "emotional hits"]
     }
 
+    print(mood)
     mood = mood.title()
     if mood not in mood_queries:
         mood = "Neutral"
-
+    print(mood)
     search_query = random.choice(mood_queries[mood])
+    print(search_query)
 
     access_token = get_spotify_access_token()
     search_url = "https://api.spotify.com/v1/search"
